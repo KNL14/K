@@ -272,8 +272,8 @@
 
 
 "## 주석 단축키
-    nmap <F12> i<ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>-----------------------------<CR><CR>/<UP><SPACE>
-    imap <F12>  <ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>-----------------------------<CR><CR>/<UP><SPACE>
+    nmap <F12> i<ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
+    imap <F12>  <ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
 
 
 "## Key Board
