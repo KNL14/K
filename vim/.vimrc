@@ -136,7 +136,7 @@
 "#	Ctrl + wf	-> 
 
 	"set tags=./tags,~/work/linux/tags
-	set tags=./tags;
+	set tags=./tags,/usr/src/linux-headers-4.9.88-ti-r111/tags
 	let g:easytags_async=1
 	let g:easytags_auto_highlight=0
 	let g:easytags_include_members=1
@@ -284,7 +284,7 @@ map! "" ""i
 
 
 "execute pathogen#infect()
-"syntax on
+syntax on
 "filetype plugin on
 
 
