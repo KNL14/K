@@ -6,8 +6,12 @@
 
 
 #한글입력
+
  sudo apt-get install locales
+ 
  sudo dpkg-reconfigure localse
+ 
   -> [*] en_US.UTF-8 UTF-8
+  
   -> [*] ko_KR.UTF-8 UTF-8
     
