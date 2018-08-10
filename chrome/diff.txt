@@ -1,0 +1,35 @@
+78,79c78
+< DEFAULT_SIZES = "1920x1200"
+< #DEFAULT_SIZES = "1600x1200,3840x2560"
+---
+> DEFAULT_SIZES = "1600x1200,3840x2560"
+437,438c436,437
+< #    while os.path.exists(X_LOCK_FILE_TEMPLATE % display):
+< #      display += 1
+---
+>     while os.path.exists(X_LOCK_FILE_TEMPLATE % display):
+>       display += 1
+549,559c548,558
+< #    logging.info("Starting %s on display :%d" % (xvfb, display))
+< #    screen_option = "%dx%dx24" % (max_width, max_height)
+< #    self.x_proc = subprocess.Popen(
+< #        [xvfb, ":%d" % display,
+< #         "-auth", x_auth_file,
+< #         "-nolisten", "tcp",
+< #         "-noreset",
+< #         "-screen", "0", screen_option
+< #        ] + extra_x_args, env=self._x_env())
+< #    if not self.x_proc.pid:
+< #      raise Exception("Could not start Xvfb.")
+---
+>     logging.info("Starting %s on display :%d" % (xvfb, display))
+>     screen_option = "%dx%dx24" % (max_width, max_height)
+>     self.x_proc = subprocess.Popen(
+>         [xvfb, ":%d" % display,
+>          "-auth", x_auth_file,
+>          "-nolisten", "tcp",
+>          "-noreset",
+>          "-screen", "0", screen_option
+>         ] + extra_x_args, env=self._x_env())
+>     if not self.x_proc.pid:
+>       raise Exception("Could not start Xvfb.")
