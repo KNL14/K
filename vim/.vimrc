@@ -1,18 +1,19 @@
 " 180809: git 폴더 정리
+"	- tabstop=4 기준으로 정리함.
 "# ====================================================================== 
 "#
 "# VIM Key Info
 "#
-"# < Auto complete >
-"#	입력모드에서 Ctrl+p or Ctrl+n
+"# < Auto complete 자동완성 >
+"#	입력모드에서 Ctrl+p or Ctrl+n (또는 Ctrl E + N)
 "#
 "# < Undo >
-"#	u	    : undo
+"#	u			: undo
 "#	Ctrl+r	    : ReDo
 "#
 "# < input >
-"#	a : after cursor,		    A : after line
-"#	i : before cursor,		    I : before line
+"#	a : after cursor,				A : after line
+"#	i : before cursor,				I : before line
 "#	o : below the cursor,		    O : above the cursor 
 "#
 "# < move > (커서 이동 명령)
@@ -85,10 +86,10 @@
 "#	Ctrl + w, W : 커서 이동
 "#	창 너비 변경 -> 화살표 키 맵핑 참조
 "# < arrow key > 
-	nmap <C-Left> <C-W><<C-W><
-	nmap <C-Right> <C-W>><C-W>>
-	nmap <C-Up> <C-W>-<C-W>-
-	nmap <C-Down> <C-W>+<C-W>+
+nmap <C-Left> <C-W><<C-W><
+nmap <C-Right> <C-W>><C-W>>
+nmap <C-Up> <C-W>-<C-W>-
+nmap <C-Down> <C-W>+<C-W>+
 "#
 "# < column mode >
 "#	Ctrl+v > move down > Shift+i > type something > ESC > ESC
@@ -120,33 +121,33 @@
 "# ====================================================================== 
 "
 "# < Vundle >
-	" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-	set nocompatible		    " be iMproved, required (Vi 와의 호환성을 없애고, Vim 만의 기능을 쓸 수 있게 함) 
-	filetype off			    " required (파일의 종류를 자동으로 인식X)
-	
-	
-	set rtp+=~/.vim/bundle/Vundle.vim   " set the runtime path to include Vundle and initialize 
-	call vundle#begin()		    " <<< BEGIN >>> 설치할 플러그인을 call vundle#begin()과 call vundle#end 사이에 작성한다. 
-	" ---------------------------------------------------------------------	
+set nocompatible					" be iMproved, required (Vi 와의 호환성을 없애고, Vim 만의 기능을 쓸 수 있게 함) 
+filetype off						" required (파일의 종류를 자동으로 인식X)
 
-	Plugin 'VundleVim/Vundle.vim'	    " Vundle 플러그인을 Vundle로 관리하기 위해 Plugin 'VundleVim/Vundle.vim을 작성한 것을 볼 수 있다.
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'nanotech/jellybeans.vim' 
-	Plugin 'kchmck/vim-coffee-script'
 
-	" ---------------------------------------------------------------------	
-	call vundle#end()		    " <<< ENG >>>
-	filetype plugin indent on	    " required 
+set rtp+=~/.vim/bundle/Vundle.vim   " set the runtime path to include Vundle and initialize 
+call vundle#begin()					" <<< BEGIN >>> 설치할 플러그인을 call vundle#begin()과 call vundle#end 사이에 작성한다. 
+" ---------------------------------------------------------------------	
 
-	" :PluginList       - lists configured plugins 
-	" :PluginInstall    - 설정 파일에 작성한 플러그인들이 모두 설치된다 
-	" :PluginSearch foo - searches for foo; append `!` to refresh local cache 
-	" :PluginClean      - 플러그인을 삭제하려면 ~/.vimrc에서 삭제한 뒤에 Vim을 열어서 :PluginClean 명령을 실행하면 된다.
-	" 
-	" see :h vundle for more details or wiki for FAQ 
-	" Put your non-Plugin stuff after this line
+Plugin 'VundleVim/Vundle.vim'	    " Vundle 플러그인을 Vundle로 관리하기 위해 Plugin 'VundleVim/Vundle.vim을 작성한 것을 볼 수 있다.
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'nanotech/jellybeans.vim' 
+Plugin 'kchmck/vim-coffee-script'
+
+" ---------------------------------------------------------------------	
+call vundle#end()					" <<< ENG >>>
+filetype plugin indent on			" required 
+
+" :PluginList       - lists configured plugins 
+" :PluginInstall    - 설정 파일에 작성한 플러그인들이 모두 설치된다 
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache 
+" :PluginClean      - 플러그인을 삭제하려면 ~/.vimrc에서 삭제한 뒤에 Vim을 열어서 :PluginClean 명령을 실행하면 된다.
+" 
+" see :h vundle for more details or wiki for FAQ 
+" Put your non-Plugin stuff after this line
 "#
 "# ====================================================================== 
 "#
@@ -156,6 +157,7 @@
 "#	:tj fnName	-> tags jump
 "#	Ctrl + wf	-> 창이 수평 분할되어 헤더파일이 열립니다.
 "#
+set tags=./tags
 "# ====================================================================== 
 "#
 "# < cscope >
@@ -177,26 +179,25 @@
 "#	빌드 종료시 값을 입력 하는게 나오는데 Ctrl+d를 눌러서 종료 합니다.
 "#	이후 .vimrc 파일에 다음 내용을 추가 합니다 
 "#	=============================================
-	set tags=./tags
-	set csprg=/usr/bin/cscope
-	set csto=0
-	set cst
-	set nocsverb
-	if filereadable("./cscope.out") 
-	    cs add ./cscope.out
-	else
-	    cs add ~/work/src/cscope.out
-	endif
-	set csverb
-	
-	"nmap <C-C>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-	"nmap <C-C>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-	"nmap <C-C>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-	"nmap <C-C>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-	"nmap <C-C>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-	"nmap <C-C>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-	"nmap <C-C>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-	"nmap <C-C>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+set csprg=/usr/bin/cscope
+set csto=0
+set cst
+set nocsverb
+if filereadable("./cscope.out") 
+	cs add ./cscope.out
+else
+	cs add ~/work/src/cscope.out
+endif
+set csverb
+
+"nmap <C-C>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-C>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-C>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-C>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-C>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-C>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+"nmap <C-C>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"nmap <C-C>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 "#
 "# ====================================================================== 
 "#
@@ -206,18 +207,18 @@
 "#	~/.vim/plugin/taglist.vim
 "#	:Tlist	    <-- to show tag list window.
 "#
-	nmap <F9> :TlistToggle<CR>
-	let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-	let Tlist_Inc_Winwidth = 0
-	let Tlist_Exit_OnlyWindow = 0
-	let Tlist_Auto_Open = 0
-	let Tlist_Use_Right_Window = 1
+nmap <F9> :TlistToggle<CR>
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_Inc_Winwidth = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_Auto_Open = 0
+let Tlist_Use_Right_Window = 1
 "#
 "# ====================================================================== 
 "#
 "# < color >
 "#
-      colorscheme jellybeans
+colorscheme jellybeans
 "
 "# ====================================================================== 
 "#
@@ -231,27 +232,27 @@
 "#
 "# < short key (hotkey) >
 "#
-	" -----------------------------------------------------------
-	" <F4>
-	nmap <F4> :NERDTreeToggle<CR>
+" -----------------------------------------------------------
+" <F4>
+nmap <F4> :NERDTreeToggle<CR>
 
-	" -----------------------------------------------------------
-	" <F5>
-	map <F5> :call CompileGcc()
+" -----------------------------------------------------------
+" <F5>
+map <F5> :call CompileGcc()
 
-	func! CompileGcc()
-	    exec "w" 
-	    "silent make
-	    ! gcc %
-	endfunc 
+func! CompileGcc()
+	exec "w" 
+	"silent make
+	! gcc %
+endfunc 
 
-	" -----------------------------------------------------------
-	" <S-F5>
-	map <S-F5> :call RunAOut() <CR>
+" -----------------------------------------------------------
+" <S-F5>
+map <S-F5> :call RunAOut() <CR>
 
-	func! RunAOut()
-	    !./a.out
-	endfunc
+func! RunAOut()
+	!./a.out
+endfunc
 
 ""# Source Explorer
 "       nmap <F8> :SrcExplToggle<CR>
@@ -261,87 +262,86 @@
 "       let g:SrcExpl_gobackKey = "<C-B>"
 "       let g:SrcExpl_isUpdateTags = 0
 
-	" -----------------------------------------------------------
-	" <F9> tag list
+" -----------------------------------------------------------
+" <F9> tag list
 
-	" -----------------------------------------------------------
-	" <F12> make new comment (주석 단축키)
-	nmap <F12> i<ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
-	imap <F12>  <ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
+" -----------------------------------------------------------
+" <F12> make new comment (주석 단축키)
+nmap <F12> i<ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
+imap <F12>  <ESC>O<ESC>0i<CR><CR><UP>/-<BS>*<SPACE>Thomas: <C-R>=strftime("%x %T")<ESC><CR>------------------------------------<CR><CR>*/<UP><SPACE>
 
-	"# 괄호 자동 완성 후 입력모드로 전환
-	map! () ()i
-	map! (); ();hi
-	map! [] []i
-	map! {} {}i
-	map! {}; {};iO
-	map! <> <>i
-	map! '' ''i
-	map! "" ""i
+"# 괄호 자동 완성 후 입력모드로 전환
+map! () ()i
+map! (); ();hi
+map! [] []i
+map! {} {}i
+map! {}; {};iO
+map! <> <>i
+map! '' ''i
+map! "" ""i
 
-	"# 
+"# 
 "	execute pathogen#infect()
-	filetype plugin on
+filetype plugin on
 
 "#
 "# ====================================================================== 
 "#
 "# < macro > q + q (start), q (stop),  paste (Ctrl+R Ctrl+R b)
 "#
-   let @m='i#include <stdio.h>int main(int argc, char *argv[]) {}ko  '
+let @m='i#include <stdio.h>int main(int argc, char *argv[]) {}ko  '
 "#
 "# ====================================================================== 
 "#
 "# < settings >
 "#
-	set cindent			" C언어 자동 들여쓰기
-	set smartindent			" 자동 들여쓰기
-	set background=dark
-	set number			" (nu) 줄 번호를 나타나게 함
-	set tabstop=8			" (ts) tag stop size 
-	set hlsearch			" 검색시 하이라이트(색상강조)
-	set showmatch			" 일치하는 괄호 하이라이팅
-	set showcmd			" (부분적인)명령어를 상태라인에 보여줌
-	"set scrolloff=2
-	"set wildmode=longest,list
-	"set sts=4			" st select
-	"set sw=1			" 스크롤바 너비
-	set autowrite			" :next나 :make 같은 명령를 입력하면 자동으로 저장
-	"set autoread			" 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
-	set bs=eol,start,indent		" 백스페이스 사용
-	set history=500
-	set laststatus=2			" 상태바 표시 
-	set paste			" 붙여넣기 계단현상 없애기
-	set shiftwidth=4			" 자동 들여쓰기 너비 설정
-	set smartcase			" 검색시 대소문자 구별
-	set smarttab
-	set softtabstop=4
-	set ruler			" 현재 커서 위치 표시
-	set incsearch
-	set title			" 제목을 표시
-	set visualbell			" (vb) 오류음 대신 비주얼벨 사용
-	set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\ 
-	set autoindent			" (ai) 자동 들여쓰기
-	set syntax=on			" 자동 문법 강조
+set autoindent					" (ai) 자동 들여쓰기
+set smartindent					" 자동 들여쓰기
+set cindent						" C언어 자동 들여쓰기
+set background=dark
+set number						" (nu) 줄 번호를 나타나게 함
+set tabstop=4					" (ts) tag stop size 
+set hlsearch					" 검색시 하이라이트(색상강조)
+set showmatch					" 일치하는 괄호 하이라이팅
+set showcmd						" (부분적인)명령어를 상태라인에 보여줌
+"set scrolloff=2
+"set wildmode=longest,list
+"set sts=4						" st select
+"set sw=1						" 스크롤바 너비
+set autowrite					" :next나 :make 같은 명령를 입력하면 자동으로 저장
+"set autoread					" 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
+set bs=eol,start,indent			" 백스페이스 사용
+set history=500
+set laststatus=2				" 상태바 표시 
+set paste						" 붙여넣기 계단현상 없애기
+set shiftwidth=4				" 자동 들여쓰기 너비 설정
+set smartcase					" 검색시 대소문자 구별
+set smarttab
+set softtabstop=4
+set ruler						" 현재 커서 위치 표시
+set incsearch
+set title						" 제목을 표시
+set visualbell					" (vb) 오류음 대신 비주얼벨 사용
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\ 
+set syntax=on					" 자동 문법 강조
 
-	"# 마지막으로 수정된 곳에 커서를 위치함
-	au BufReadPost * 
-	    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-	    \ exe "norm g`\"" |
-	    \ endif
+"# 마지막으로 수정된 곳에 커서를 위치함
+au BufReadPost * 
+			\ if line("'\"") > 0 && line("'\"") <= line("$") |
+			\ exe "norm g`\"" |
+			\ endif
 
-	"# 파일 인코딩을 한국어로
-	if $LANG[0]=='k' && $LANG[1]=='o'
-	    set fileencoding=korea
-	endif
+"# 파일 인코딩을 한국어로
+if $LANG[0]=='k' && $LANG[1]=='o'
+	set fileencoding=korea
+endif
 
-	set guifont=Monaco:h10 noanti
-	
+set guifont=Monaco:h10 noanti
 
-	" Syntax Highlighting
-	if has("syntax")
-	    syntax on
-	endif
+" Syntax Highlighting
+if has("syntax")
+	syntax on
+endif
 
 "#
 "# ====================================================================== 
