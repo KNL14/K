@@ -124,7 +124,7 @@ nmap <C-Down> <C-W>+<C-W>+
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 set nocompatible					" be iMproved, required (Vi 와의 호환성을 없애고, Vim 만의 기능을 쓸 수 있게 함) 
-filetype off						" required (파일의 종류를 자동으로 인식X)
+filetype on							" required (파일의 종류를 자동으로 인식X)
 
 
 set rtp+=~/.vim/bundle/Vundle.vim   " set the runtime path to include Vundle and initialize 
@@ -157,7 +157,10 @@ filetype plugin indent on			" required
 "#	:tj fnName	-> tags jump
 "#	Ctrl + wf	-> 창이 수평 분할되어 헤더파일이 열립니다.
 "#
-set tags=./tags
+set tags=tags,./tags
+set exrc
+set nobackup
+
 "# ====================================================================== 
 "#
 "# < cscope >
@@ -183,12 +186,9 @@ set csprg=/usr/bin/cscope
 set csto=0
 set cst
 set nocsverb
-if filereadable("./cscope.out") 
-	cs add ./cscope.out
-else
-	cs add ~/work/src/cscope.out
+if filereadable("./cscope.out")
+    cs add cscope.out
 endif
-set csverb
 
 "nmap <C-C>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 "nmap <C-C>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -292,38 +292,76 @@ filetype plugin on
 let @m='i#include <stdio.h>int main(int argc, char *argv[]) {}ko  '
 "#
 "# ====================================================================== 
-"#
-"# < settings >
-"#
-set autoindent					" (ai) 자동 들여쓰기
-set smartindent					" 자동 들여쓰기
-set cindent						" C언어 자동 들여쓰기
-set background=dark
-set number						" (nu) 줄 번호를 나타나게 함
-set tabstop=4					" (ts) tag stop size 
-set hlsearch					" 검색시 하이라이트(색상강조)
-set showmatch					" 일치하는 괄호 하이라이팅
-set showcmd						" (부분적인)명령어를 상태라인에 보여줌
-"set scrolloff=2
+"#  General settings 
+"# ====================================================================== 
+set title						" 제목을 표시
+set history=1000
+set ruler                       " 현재 커서 위치 표시
+set magic
+set showmatch                   " 일치하는 괄호 하이라이팅
+set number                      " (nu) 줄 번호를 나타나게 함
+set relativenumber              " set line number relative
+set fileencoding=utf-8
+set fileencodings=utf-8,cp949,euc-kr
+set termencoding=utf-8
+set encoding=utf-8
+
+set autowrite                   " :next나 :make 같은 명령를 입력하면 자동으로 저장
+set cindent                     " C언어 자동 들여쓰기
+set cinoptions=:0,g0,0,l1,t0
+set laststatus=2
+set mouse=a
+set noerrorbells
+set nowrap
+set report=0
+set scrolloff=5
+set selection=exclusive
+set showmode
+set sidescrolloff=5
+set startofline
+set ttyfast
+set wildmenu
+set whichwrap=h,l,[,]
+set wildmode=longest:full,full
 "set wildmode=longest,list
-"set sts=4						" st select
-"set sw=1						" 스크롤바 너비
-set autowrite					" :next나 :make 같은 명령를 입력하면 자동으로 저장
-"set autoread					" 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
+set background=dark
+set showcmd                     " (부분적인)명령어를 상태라인에 보여줌
+"set sts=4                      " st select
+"set sw=1                       " 스크롤바 너비
+"set autoread                   " 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
 set bs=eol,start,indent			" 백스페이스 사용
 set history=500
 set laststatus=2				" 상태바 표시 
 set paste						" 붙여넣기 계단현상 없애기
-set shiftwidth=4				" 자동 들여쓰기 너비 설정
-set smartcase					" 검색시 대소문자 구별
+"# ====================================================================== 
+"#  Indent settings 
+"# ====================================================================== 
+set tabstop=4
+set shiftwidth=4                " Tab을 4개의 space로  
+set softtabstop=4               " Tab을 눌렀을 때 4개의 space로 입력한다.
+set expandtab                   " <-> noexpandtab
 set smarttab
-set softtabstop=4
-set ruler						" 현재 커서 위치 표시
-set incsearch
-set title						" 제목을 표시
+set ai                          " autoindent
+set si                          " smartindent
+"# ====================================================================== 
+"#  Search settings
+"# ====================================================================== 
+set ignorecase                  " Ignore case when searching
+set smartcase					" Be smart when searching 
+set hlsearch                    " Highlight search last result 
+set incsearch                   " Move cursor when searching
+"# ====================================================================== 
+"#  Color settings
+"# ====================================================================== 
+if has("syntax")
+	syntax on                   " Syntax highlighting enable
+endif
+"# ====================================================================== 
+"#  Extra settings 
+"# ====================================================================== 
 set visualbell					" (vb) 오류음 대신 비주얼벨 사용
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\ 
-set syntax=on					" 자동 문법 강조
+set guifont=Monaco:h10 noanti
 
 "# 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost * 
@@ -336,12 +374,7 @@ if $LANG[0]=='k' && $LANG[1]=='o'
 	set fileencoding=korea
 endif
 
-set guifont=Monaco:h10 noanti
 
-" Syntax Highlighting
-if has("syntax")
-	syntax on
-endif
 
 "#
 "# ====================================================================== 
