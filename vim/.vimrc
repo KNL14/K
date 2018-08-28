@@ -157,7 +157,9 @@ filetype plugin indent on			" required
 "#	:tj fnName	-> tags jump
 "#	Ctrl + wf	-> 창이 수평 분할되어 헤더파일이 열립니다.
 "#
-set tags=tags,./tags
+set tags=./tags
+set tags+=/usr/src/linux-headers-4.14.52-v7+/tags
+"set tags+=/usr/include/tags
 set exrc
 set nobackup
 
@@ -300,7 +302,7 @@ set ruler                       " 현재 커서 위치 표시
 set magic
 set showmatch                   " 일치하는 괄호 하이라이팅
 set number                      " (nu) 줄 번호를 나타나게 함
-set relativenumber              " set line number relative
+"set relativenumber              " set line number relative
 set fileencoding=utf-8
 set fileencodings=utf-8,cp949,euc-kr
 set termencoding=utf-8
