@@ -1,10 +1,23 @@
-= life is up and down =
 
+git clone https://github.com/Thomaskr17/mybackup.git
 
-~/.vim/bundle
-~/.vim/doc
-~/.vim/plugin
+sudo apt install vim
 
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+cd ~/work/bak/mybackup/vim
+
+cp -r .vim/bundle ~/.vim/bundle
+
+cp .vimrc ~
+
+vi ~/.vimrc
+
+>> :PluginList
+
+>> :PluginInstall
+
+-----------------------------
 
 2018-04-27
   - backup vimrc at the beablebone black
