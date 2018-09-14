@@ -7,7 +7,9 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 cd ~/work/bak/mybackup/vim
 
-cp -r .vim/bundle ~/.vim/bundle
+cp -r .vim/bundle ~/.vim/
+
+cp -r .vim/plugin ~/.vim/
 
 cp .vimrc ~
 
