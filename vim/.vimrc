@@ -158,7 +158,7 @@ filetype plugin indent on			" required
 "#	Ctrl + wf	-> 창이 수평 분할되어 헤더파일이 열립니다.
 "#
 set tags=./tags
-set tags+=/usr/src/linux-headers-4.14.52-v7+/tags
+"set tags+=/usr/src/linux-headers-4.14.52-v7+/tags
 "set tags+=/usr/include/tags
 set exrc
 set nobackup
@@ -307,9 +307,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8,cp949,euc-kr
 set termencoding=utf-8
 set encoding=utf-8
-
 set autowrite                   " :next나 :make 같은 명령를 입력하면 자동으로 저장
-set cindent                     " C언어 자동 들여쓰기
 set cinoptions=:0,g0,0,l1,t0
 set laststatus=2
 set mouse=a
@@ -328,28 +326,26 @@ set wildmode=longest:full,full
 "set wildmode=longest,list
 set background=dark
 set showcmd                     " (부분적인)명령어를 상태라인에 보여줌
-"set sts=4                      " st select
-"set sw=1                       " 스크롤바 너비
 "set autoread                   " 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
-set bs=eol,start,indent			" 백스페이스 사용
-set history=500
-set laststatus=2				" 상태바 표시 
-set paste						" 붙여넣기 계단현상 없애기
+set bs=eol,start,indent		" 백스페이스 사용
+set laststatus=2		" 상태바 표시 
+set paste			" 붙여넣기 계단현상 없애기
 "# ====================================================================== 
 "#  Indent settings 
 "# ====================================================================== 
-set tabstop=4
-set shiftwidth=4                " Tab을 4개의 space로  
-set softtabstop=4               " Tab을 눌렀을 때 4개의 space로 입력한다.
-set expandtab                   " <-> noexpandtab
-set smarttab
-set ai                          " autoindent
-set si                          " smartindent
+set tabstop=8                   " ts
+set shiftwidth=4                " sw: Tab을 4개의 space로  
+set softtabstop=4               " sts: Tab을 눌렀을 때 4개의 space로 입력한다.
+"set expandtab                   " <-> noexpandtab
+"set smarttab
+set autoindent
+set smartindent
+set cindent                     " C언어 자동 들여쓰기
 "# ====================================================================== 
 "#  Search settings
 "# ====================================================================== 
 set ignorecase                  " Ignore case when searching
-set smartcase					" Be smart when searching 
+set smartcase			" Be smart when searching 
 set hlsearch                    " Highlight search last result 
 set incsearch                   " Move cursor when searching
 "# ====================================================================== 
@@ -375,8 +371,6 @@ au BufReadPost *
 if $LANG[0]=='k' && $LANG[1]=='o'
 	set fileencoding=korea
 endif
-
-
 
 "#
 "# ====================================================================== 
