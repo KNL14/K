@@ -157,9 +157,9 @@ filetype plugin indent on			" required
 "#	:tj fnName	-> tags jump
 "#	Ctrl + wf	-> 창이 수평 분할되어 헤더파일이 열립니다.
 "#
-set tags=./tags
-"set tags+=/usr/src/linux-headers-4.14.52-v7+/tags
-"set tags+=/usr/include/tags
+set tags=./tags,tags,../tags
+set tags+=/usr/src/linux-headers-4.15.0-34/tags	    "kernel 경로 추가
+set tags+=/usr/include/tags			    "include 경로 추가	
 set exrc
 set nobackup
 
@@ -188,9 +188,10 @@ set csprg=/usr/bin/cscope
 set csto=0
 set cst
 set nocsverb
-if filereadable("./cscope.out")
-    cs add cscope.out
-endif
+"if filereadable("./cscope.out")
+"    cs add cscope.out
+"endif
+silent cs add ./cscope.out
 
 "nmap <C-C>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 "nmap <C-C>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -303,10 +304,6 @@ set magic
 set showmatch                   " 일치하는 괄호 하이라이팅
 set number                      " (nu) 줄 번호를 나타나게 함
 "set relativenumber              " set line number relative
-set fileencoding=utf-8
-set fileencodings=utf-8,cp949,euc-kr
-set termencoding=utf-8
-set encoding=utf-8
 set autowrite                   " :next나 :make 같은 명령를 입력하면 자동으로 저장
 set cinoptions=:0,g0,0,l1,t0
 set laststatus=2
@@ -369,8 +366,15 @@ au BufReadPost *
 
 "# 파일 인코딩을 한국어로
 if $LANG[0]=='k' && $LANG[1]=='o'
-	set fileencoding=korea
+"    set enc=utf8
+"    set enc=utf-8
+"    set encoding=utf-8
+"    set fileencoding=utf-8
+"    set fileencodings=utf-8,euc-kr
+"    set termencoding=utf-8
+"    set tenc=korea
 endif
+set fileencodings=utf-8,euc-kr
 
 "#
 "# ====================================================================== 
