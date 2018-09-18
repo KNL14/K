@@ -246,7 +246,7 @@ map <F5> :call CompileGcc()
 func! CompileGcc()
 	exec "w" 
 	"silent make
-	! gcc %
+	! gcc -o %< %
 endfunc 
 
 " -----------------------------------------------------------
