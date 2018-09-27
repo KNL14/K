@@ -236,6 +236,9 @@ colorscheme jellybeans
 "# < short key (hotkey) >
 "#
 " -----------------------------------------------------------
+" <F2> change window
+nmap <F2> <C-w><C-w>
+" -----------------------------------------------------------
 " <F4>
 nmap <F4> :NERDTreeToggle<CR>
 
