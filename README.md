@@ -1,7 +1,7 @@
 
 git clone https://github.com/Thomaskr17/mybackup.git
 
-sudo apt install vim ctags cscope
+sudo apt install vim ctags cscope git
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
