@@ -22,6 +22,9 @@ vi ~/.vimrc
 -----------------------------
 
 :cs show                      <- cscope.out 확인 (:cscope)
+
 :cs add [cscope.out 경로]      <- cscope.out 추가
+
 :cs find <검색 유형> <keyword>  <- keyword 검색
+                               
 :cs help                      <- cscope help
