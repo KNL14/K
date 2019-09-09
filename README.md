@@ -21,36 +21,7 @@ vi ~/.vimrc
 
 -----------------------------
 
-vi ~/.minttyrc
-
-BoldAsFont=1
-
-Font=나눔고딕코딩
-
-FontHeight=12
-
-Blue=127,127,255
-
-BoldBlue=191,191,255
-
-Red=255,127,127
-
-BoldRed=255,191,191
-
------------------------------
-
-2018-04-27
-  - backup vimrc at the beablebone black
-
-
-
-#한글입력
-
- sudo apt-get install locales
- 
- sudo dpkg-reconfigure localse
- 
-  -> [*] en_US.UTF-8 UTF-8
-  
-  -> [*] ko_KR.UTF-8 UTF-8
-    
+:cs show                      <- cscope.out 확인 (:cscope)
+:cs add [cscope.out 경로]      <- cscope.out 추가
+:cs find <검색 유형> <keyword>  <- keyword 검색
+:cs help                      <- cscope help
